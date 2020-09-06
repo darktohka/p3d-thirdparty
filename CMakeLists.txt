@@ -117,9 +117,6 @@ if(BUILD_ZLIB)
   ExternalProject_Add(
     zlib
     GIT_REPOSITORY https://github.com/madler/zlib.git
-    GIT_TAG cacf7f1d4e3d44d871b605da3b647f07d718623f #v1.2.11
-    #URL https://github.com/madler/zlib/archive/v1.2.11.tar.gz
-    #URL_HASH SHA256=629380c90a77b964d896ed37163f5c3a34f6e6d897311f1df2a7016355c45eff
 
     CMAKE_ARGS ${COMMON_CMAKE_ARGS}
       -DZLIB_TESTS=OFF
@@ -158,9 +155,6 @@ if(BUILD_PNG)
 
     # Please note that libpng 1.6.32+ requires CMake 3.0.2
     GIT_REPOSITORY https://github.com/glennrp/libpng.git
-    GIT_TAG 9fcb846402d8692d25cb5286777a832ca852fa44 #v1.6.31
-    #URL https://github.com/glennrp/libpng/archive/v1.6.31.tar.gz
-    #URL_HASH SHA256=79c0391804c83a6e0b722c20be7c3a27aeb2fe09afbc3028abad243444c98aa0
 
     CMAKE_ARGS ${COMMON_CMAKE_ARGS}
       -DCMAKE_PREFIX_PATH=${THIRDPARTY_DIR}/zlib
@@ -184,8 +178,7 @@ if(BUILD_HARFBUZZ)
   ExternalProject_Add(
     freetype-nohb
     DEPENDS zlib png
-    URL https://download.savannah.gnu.org/releases/freetype/freetype-2.7.1.tar.gz
-    URL_HASH SHA256=162ef25aa64480b1189cdb261228e6c5c44f212aac4b4621e28cf2157efb59f5
+    URL https://download.savannah.gnu.org/releases/freetype/freetype-2.10.2.tar.xz
 
     CMAKE_ARGS ${COMMON_CMAKE_ARGS}
       -DCMAKE_PREFIX_PATH=${THIRDPARTY_DIR}/zlib;${THIRDPARTY_DIR}/png
@@ -199,8 +192,7 @@ if(BUILD_HARFBUZZ)
   ExternalProject_Add(
     harfbuzz
     DEPENDS freetype-nohb
-    URL https://www.freedesktop.org/software/harfbuzz/release/harfbuzz-2.6.4.tar.xz
-    URL_HASH SHA256=9413b8d96132d699687ef914ebb8c50440efc87b3f775d25856d7ec347c03c12
+    URL https://www.freedesktop.org/software/harfbuzz/release/harfbuzz-2.6.7.tar.xz
 
     CMAKE_ARGS ${COMMON_CMAKE_ARGS}
       -DCMAKE_PREFIX_PATH=${CMAKE_CURRENT_BINARY_DIR}/freetype-nohb
@@ -228,8 +220,7 @@ if(BUILD_FREETYPE)
   ExternalProject_Add(
     freetype
     DEPENDS zlib png harfbuzz
-    URL https://download.savannah.gnu.org/releases/freetype/freetype-2.7.1.tar.gz
-    URL_HASH SHA256=162ef25aa64480b1189cdb261228e6c5c44f212aac4b4621e28cf2157efb59f5
+    URL https://download.savannah.gnu.org/releases/freetype/freetype-2.10.2.tar.xz
 
     CMAKE_ARGS ${COMMON_CMAKE_ARGS}
       -DCMAKE_PREFIX_PATH=${THIRDPARTY_DIR}/zlib;${THIRDPARTY_DIR}/png;${THIRDPARTY_DIR}/harfbuzz
