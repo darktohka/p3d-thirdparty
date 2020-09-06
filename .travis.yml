@@ -1,0 +1,16 @@
+language: cpp
+
+os:
+  - windows
+
+env:
+  - PATH="/c/Python38:/c/Python38/Scripts:$PATH"
+
+script:
+  - choco install python --version 3.8.5
+  - choco upgrade cmake
+  - python -m pip install --upgrade requests
+  - ./build.bat x64
+  - python -OO travis_upload.py libs.tar.gz libs-x64.tar.gz
+  - ./build.bat x86
+  - python -OO travis_upload.py libs.tar.gz libs-x86.tar.gz
